@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2026-01-04T01:14:09+02:00",
+    "exported_at": "2026-01-04T01:34:02+02:00",
     "name": "TMF + XASECO",
     "author": "pterodactyl@noreply.get-good.net",
     "description": "Combined server running TMF and XASECO. Still requires a separate MySQL\/MariaDB database instance.",
@@ -13,10 +13,10 @@
         "ghcr.io\/rallymen007\/yolks:php_5.6": "ghcr.io\/rallymen007\/yolks:php_5.6"
     },
     "file_denylist": [],
-    "startup": "cd xaseco && php aseco.php TMF <\/dev\/null & && .\/TrackmaniaServer \/dedicated_cfg=dedicated_cfg.txt \/game_settings={{GAME_CONFIG}} \/nodaemon",
+    "startup": ".\/TrackmaniaServer \/dedicated_cfg=dedicated_cfg.txt \/game_settings={{GAME_CONFIG}} > tmserver.log 2>&1 && cd xaseco && php aseco.php TMF <\/dev\/null",
     "config": {
-        "files": "{\r\n    \"GameData\/Config\/dedicated_cfg.txt\": {\r\n        \"parser\": \"xml\",\r\n        \"find\": {\r\n            \"dedicated.masterserver_account.login\": \"{{server.build.env.MASTERSERVER_LOGIN}}\",\r\n            \"dedicated.masterserver_account.password\": \"{{server.build.env.MASTERSERVER_PASSWORD}}\",\r\n            \"dedicated.masterserver_account.validation_key\": \"{{server.build.env.MASTERSERVER_KEY}}\",\r\n            \"dedicated.server_options.name\": \"{{server.build.env.SERVER_NAME}}\",\r\n            \"dedicated.server_options.comment\": \"{{server.build.env.SERVER_COMMENT}}\",\r\n            \"dedicated.server_options.password\": \"{{server.build.env.SERVER_PASSWORD}}\",\r\n            \"dedicated.system_config.server_port\": \"{{server.build.default.port}}\",\r\n            \"dedicated.system_config.server_p2p_port\": \"{{server.build.env.SERVER_P2P_PORT}}\",\r\n            \"dedicated.system_config.packmask\": \"{{server.build.env.PACKMASK}}\"\r\n        }\r\n    },\r\n \"xaseco\/localdatabase.xml\": {\r\n        \"parser\": \"xml\",\r\n        \"find\": {\r\n            \"settings.mysql_server\": \"{{server.build.env.SQL_HOST}}\",\r\n            \"settings.mysql_login\": \"{{server.build.env.SQL_USER}}\",\r\n            \"settings.mysql_password\": \"{{server.build.env.SQL_PW}}\"\r\n        }\r\n    },\r\n    \"xaseco\/config.xml\": {\r\n        \"parser\": \"xml\",\r\n        \"find\": {\r\n            \"settings.tmserver.ip\": \"{{server.build.env.TM_SRV_IP}}\",\r\n            \"settings.tmserver.port\": \"{{server.build.env.TM_SRV_PORT}}\",\r\n            \"settings.tmserver.password\": \"{{server.build.env.TM_SA_PW}}\",\r\n            \"settings.aseco.masteradmins.tmlogin\": \"{{server.build.env.X_MA_LOGIN}}\"\r\n        }\r\n    },\r\n    \"xaseco\/dedimania.xml\": {\r\n        \"parser\": \"xml\",\r\n        \"find\": {\r\n            \"dedimania.masterserver_account.login\": \"{{server.build.env.DM_LOGIN}}\",\r\n            \"dedimania.masterserver_account.password\": \"{{server.build.env.DM_PW}}\",\r\n            \"dedimania.masterserver_account.nation\": \"{{server.build.env.DM_NATION}}\"\r\n        }\r\n    }\r\n}",
-        "startup": "{\r\n    \"done\": \"...Load succeeds\"\r\n}",
+        "files": "{\r\n    \"GameData\/Config\/dedicated_cfg.txt\": {\r\n        \"parser\": \"xml\",\r\n        \"find\": {\r\n            \"dedicated.masterserver_account.login\": \"{{server.build.env.MASTERSERVER_LOGIN}}\",\r\n            \"dedicated.masterserver_account.password\": \"{{server.build.env.MASTERSERVER_PASSWORD}}\",\r\n            \"dedicated.masterserver_account.validation_key\": \"{{server.build.env.MASTERSERVER_KEY}}\",\r\n            \"dedicated.server_options.name\": \"{{server.build.env.SERVER_NAME}}\",\r\n            \"dedicated.server_options.comment\": \"{{server.build.env.SERVER_COMMENT}}\",\r\n            \"dedicated.server_options.password\": \"{{server.build.env.SERVER_PASSWORD}}\",\r\n            \"dedicated.system_config.server_port\": \"{{server.build.default.port}}\",\r\n            \"dedicated.system_config.server_p2p_port\": \"{{server.build.env.SERVER_P2P_PORT}}\",\r\n            \"dedicated.system_config.packmask\": \"{{server.build.env.PACKMASK}}\"\r\n        }\r\n    },\r\n    \"xaseco\/localdatabase.xml\": {\r\n        \"parser\": \"xml\",\r\n        \"find\": {\r\n            \"settings.mysql_server\": \"{{server.build.env.SQL_HOST}}\",\r\n            \"settings.mysql_login\": \"{{server.build.env.SQL_USER}}\",\r\n            \"settings.mysql_password\": \"{{server.build.env.SQL_PW}}\"\r\n        }\r\n    },\r\n    \"xaseco\/config.xml\": {\r\n        \"parser\": \"xml\",\r\n        \"find\": {\r\n            \"settings.tmserver.ip\": \"{{server.build.env.TM_SRV_IP}}\",\r\n            \"settings.tmserver.port\": \"{{server.build.env.TM_SRV_PORT}}\",\r\n            \"settings.tmserver.password\": \"{{server.build.env.TM_SA_PW}}\",\r\n            \"settings.aseco.masteradmins.tmlogin\": \"{{server.build.env.X_MA_LOGIN}}\"\r\n        }\r\n    },\r\n    \"xaseco\/dedimania.xml\": {\r\n        \"parser\": \"xml\",\r\n        \"find\": {\r\n            \"dedimania.masterserver_account.login\": \"{{server.build.env.DM_LOGIN}}\",\r\n            \"dedimania.masterserver_account.password\": \"{{server.build.env.DM_PW}}\",\r\n            \"dedimania.masterserver_account.nation\": \"{{server.build.env.DM_NATION}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"XASECO v1.16 running\"\r\n}",
         "logs": "{}",
         "stop": "^C"
     },
@@ -27,7 +27,7 @@
             "entrypoint": "bash"
         }
     },
-        "variables": [
+    "variables": [
         {
             "name": "Master Server Login",
             "description": "Master Server username. Obtained from https:\/\/players.trackmaniaforever.com\/main.php?view=dedicated-servers",
